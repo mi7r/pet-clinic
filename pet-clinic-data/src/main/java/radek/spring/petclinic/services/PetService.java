@@ -2,12 +2,7 @@ package radek.spring.petclinic.services;
 
 import radek.spring.petclinic.model.Pet;
 
-import java.util.Set;
 
-public interface PetService {
-    Pet findById(Long id);
+public interface PetService extends CrudService<Pet, Long> {
 
-    Pet save(Pet pet);
-
-    Set<Pet> findAll();
 }
