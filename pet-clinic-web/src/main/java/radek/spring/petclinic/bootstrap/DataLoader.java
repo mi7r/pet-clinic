@@ -6,8 +6,6 @@ import radek.spring.petclinic.model.Owner;
 import radek.spring.petclinic.model.Vet;
 import radek.spring.petclinic.services.OwnerService;
 import radek.spring.petclinic.services.VetService;
-import radek.spring.petclinic.services.map.OwnerServiceMap;
-import radek.spring.petclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -15,9 +13,9 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader(){
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService){
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
