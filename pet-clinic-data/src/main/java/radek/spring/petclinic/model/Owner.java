@@ -1,9 +1,6 @@
 package radek.spring.petclinic.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,12 +9,14 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "owners")
 public class Owner extends Person {
 
     @Builder
-    public Owner(Long id, String firstName, String lastName, String address, String city, String telephone, Set<Pet> pets) {
+    public Owner(Long id, String firstName, String lastName, String address, String city,
+                 String telephone, Set<Pet> pets) {
         super(id, firstName, lastName);
         this.address = address;
         this.city = city;

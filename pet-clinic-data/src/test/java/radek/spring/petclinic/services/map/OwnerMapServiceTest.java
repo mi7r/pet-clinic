@@ -6,19 +6,20 @@ import radek.spring.petclinic.model.Owner;
 
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
 
     final Long ownerId = 1L;
+    final String lastName = "Smith";
 
     @BeforeEach
     void setUp() {
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
 
-        ownerMapService.save(Owner.builder().id(ownerId).build());
+        ownerMapService.save(Owner.builder().id(ownerId).lastName(lastName).build());
     }
 
     @Test
@@ -29,10 +30,15 @@ class OwnerMapServiceTest {
 
     @Test
     void deleteById() {
+        ownerMapService.deleteById(ownerId);
+
+        assertEquals(0, ownerMapService.findAll().size());
     }
 
     @Test
     void delete() {
+        ownerMapService.delete(ownerMapService.findById(ownerId));
+        assertEquals(0, ownerMapService.findAll().size());
     }
 
     @Test
@@ -40,7 +46,14 @@ class OwnerMapServiceTest {
         Long id = 2L;
         Owner owner2 = Owner.builder().id(id).build();
         Owner savedOwner = ownerMapService.save(owner2);
-        assertEquals(id,savedOwner.getId());
+        assertEquals(id, savedOwner.getId());
+    }
+
+    @Test
+    void saveNoId() {
+        Owner savedOwner = ownerMapService.save(Owner.builder().build());
+        assertNotNull(savedOwner);
+        assertNotNull(savedOwner.getId());
     }
 
     @Test
@@ -51,5 +64,14 @@ class OwnerMapServiceTest {
 
     @Test
     void findByLastName() {
+        Owner smith = ownerMapService.findByLastName(lastName);
+        assertNotNull(smith);
+        assertEquals(ownerId, smith.getId());
+    }
+
+    @Test
+    void findByLastNameNotFound() {
+        Owner smith = ownerMapService.findByLastName("Malinowski");
+        assertNull(smith);
     }
 }
