@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import radek.spring.petclinic.model.Owner;
 import radek.spring.petclinic.model.Pet;
 import radek.spring.petclinic.model.Visit;
 import radek.spring.petclinic.services.PetService;
