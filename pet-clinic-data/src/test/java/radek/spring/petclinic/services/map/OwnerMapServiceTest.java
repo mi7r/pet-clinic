@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OwnerMapServiceTest {
 
-    OwnerMapService ownerMapService;
+    private OwnerMapService ownerMapService;
 
-    final Long ownerId = 1L;
-    final String lastName = "Smith";
+    private final Long ownerId = 1L;
+    private final String lastName = "Smith";
 
     @BeforeEach
     void setUp() {
