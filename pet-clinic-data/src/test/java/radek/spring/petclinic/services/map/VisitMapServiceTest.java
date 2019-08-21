@@ -55,6 +55,12 @@ class VisitMapServiceTest {
     }
 
     @Test
+    void saveWithoutParameters(){
+        Visit visitTest = Visit.builder().build();
+        assertThrows(RuntimeException.class, ()-> visitMapService.save(visitTest));
+    }
+
+    @Test
     void findById() {
         Visit visitTest = visitMapService.findById(visitId);
         assertEquals(visitId, visitTest.getId());
