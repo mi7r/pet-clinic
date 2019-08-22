@@ -12,7 +12,7 @@ import java.util.Locale;
 @Component
 public class PetTypeFormatter implements Formatter<PetType> {
 
-    PetTypeService petTypeService;
+    private PetTypeService petTypeService;
 
     public PetTypeFormatter(PetTypeService petTypeService) {
         this.petTypeService = petTypeService;
