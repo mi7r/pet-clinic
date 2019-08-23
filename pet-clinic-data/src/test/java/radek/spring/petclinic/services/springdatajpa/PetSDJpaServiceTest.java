@@ -23,8 +23,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class PetSDJpaServiceTest {
 
-    private static final String PET_NAME = "Rocky";
-
     @Mock
     PetRepository petRepository;
 
@@ -35,7 +33,7 @@ class PetSDJpaServiceTest {
     @BeforeEach
     void setUp() {
         PetType dogPetType = PetType.builder().id(2L).name("dog").build();
-        returnPet = Pet.builder().id(1L).name(PET_NAME).petType(dogPetType).build();
+        returnPet = Pet.builder().id(1L).petType(dogPetType).build();
     }
 
     @Test
