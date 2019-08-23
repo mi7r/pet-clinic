@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class OwnersSDJpaServiceTest {
 
-    public static final String LAST_NAME = "Smith";
+    private static final String LAST_NAME = "Smith";
     @Mock
     OwnerRepository ownerRepository;
     @Mock
@@ -34,7 +34,7 @@ class OwnersSDJpaServiceTest {
 
     @InjectMocks
     OwnersSDJpaService service;
-    Owner returnOwner;
+    private Owner returnOwner;
 
     @BeforeEach
     void setUp() {
